@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en>">
+
+<head>
+    <title></title>
+    <style>
+        body {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        
+
+        .B1 {
+            margin-left: 10px;
+            width: 100px;
+            height: 50px;
+            color: black;
+            background-color: green;
+            border-radius: 10px;
+            border: 1;
+        }
+        .B1:hover{
+                background: greenyellow;
+                transform: translateY(-2px);
+                color: #fff;
+                box-shadow: 0px 10px 25px
+                rgba(46, 223, 229,0.455);
+            }
+
+        input {
+            margin-right: 10px;
+            width: 500px;
+            height: 50px;
+            background-color: wheat;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: 1;
+        }
+
+        .show {
+            word-wrap: break-word;
+            width: 620px;
+            height: 50px;
+            font-size: 50px;
+            border: 1px;
+            color: red;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            
+        }
+        p{
+            font-size: 150px;
+            color: skyblue;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+       
+           
+    </style>
+</head>
+
+<body>
+    <ul></ul>
+    <center>
+        <p>CODING</p>
+        <form id="form" action  ="">
+            <input  id="input" />
+            <button class ="B1"onclick="myFunction()">Send</button>
+        </form>
+        <br>
+        <br>
+        <div id="show" class="show"></div>
+    </center>
+    
+    <script>
+        function myFunction() {
+          var x = document.getElementById("show");
+          if (x.innerHTML === "") {
+            x.innerHTML = input.value;
+          } else {
+            x.innerHTML = input.value;
+          }
+        }
+        </script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io(); 
+
+    var form = document.getElementById("form");
+    var input = document.getElementById("input");
+
+    form.addEventListener('submit',function(e) {
+        e.preventDefault();
+        if (input.value) {
+            socket.emit('chat message', input.value);
+            input.value = '';
+        }
+    } );
+
+</script>
+</body>
+
+</html>
